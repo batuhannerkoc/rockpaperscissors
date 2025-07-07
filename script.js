@@ -1,59 +1,75 @@
-let randomNum;
-let computerChoice;
-let humanChoice;
-function computerDecide() {
-    if(randomNum <= 0.3){
+
+function getComputerChoice(){
+    let computerChoiceNum = Math.floor(Math.random() * 3);
+    let computerChoice;
+    if(computerChoiceNum == 0){
         computerChoice = "rock";
     }
-    else if (randomNum > 0.3 && randomNum <= 0.6)
-    {
+    else if(computerChoiceNum == 1){
         computerChoice = "paper";
     }
-    else {
+    else{
         computerChoice = "scissors";
     }
-
-    return(computerChoice);
+    return (computerChoice);
 }
 
-function humanDecide() {
-    humanChoice = prompt("Please make your decision. (Rock, Paper, Scissors)");
+
+function getHumanChoice(){
+    let humanChoice;
+    humanChoice = prompt("Please enter your decision");
     humanChoice = humanChoice.toLowerCase();
-    if( humanChoice !=="rock" && humanChoice !== "paper" && humanChoice !== "scissors"){       
-        alert("Please make a valid decision!")
-        humanDecide();
+    if(humanChoice !== "rock" && humanChoice !== "scissors" && humanChoice !== "paper"){
+        alert("Please enter a valid response ex. rock,paper,scissors");
+        getHumanChoice();
     }
     else{
-        return(humanChoice);
+        return humanChoice;
     }
+    
 }
 
+
+
+let humanScore = 0;
+let computerScore = 0;
+
+function playRound(humanSelection,computerSelection){
+    alert(`You chose: ${humanSelection}, Computer chose: ${computerSelection}`);
+    if(humanSelection == computerSelection){
+        alert(`It's a draw! Scores: You - ${humanScore}, Computer - ${computerScore}`);
+    }
+    else if(
+        humanSelection == "rock" && computerSelection == "scissors" ||
+        humanSelection == "scissors" && computerSelection == "paper" ||
+        humanSelection == "paper" && computerSelection == "rock"
+
+    ){
+        humanScore++;
+        alert(`You won this round! Scores: You - ${humanScore}, Computer - ${computerScore}`);
+
+    }
+    else{
+        computerScore++;
+        alert(`You lost this round! Scores: You - ${humanScore}, Computer - ${computerScore}`);
+    }
+    
+    
+}
 function playGame(){
-    randomNum = Math.random();
-    computerDecide();
-    humanDecide();
-    if (humanChoice == "rock" && computerChoice == "paper") {
-        alert("Computer choose: " + computerChoice+", You lost!")
+    for(let i = 0; i < 5; i++){
+        const humanSelection = getHumanChoice()
+        const computerSelection = getComputerChoice()
+        playRound(humanSelection,computerSelection);
+        
     }
-    else if (humanChoice == "rock" && computerChoice == "scissors") {
-        alert("Computer choose: " + computerChoice+", You won!")
+    if (humanScore > computerScore) {
+        alert("🎉 You win the game!");
+    } else if (computerScore > humanScore) {
+        alert("😞 You lost the game!");
+    } else {
+        alert("🤝 The game is a tie!");
     }
-    else if (humanChoice == "paper" && computerChoice == "rock") {
-        alert("Computer choose: " + computerChoice+", You won!")
-    }
-    else if (humanChoice == "paper" && computerChoice == "scissors") {
-        alert("Computer choose: " + computerChoice+", You lost!")
-    }
-    else if (humanChoice == "scissors" && computerChoice == "rock") {
-        alert("Computer choose: " + computerChoice+", You lost!")
-    }
-    else if (humanChoice == "scissors" && computerChoice == "paper") {
-        alert("Computer choose: " + computerChoice+", You win!")
-    }
-    else if (humanChoice == computerChoice){
-        alert("Computer choose: " + computerChoice+ " It's a draw!")
-    }
-    playGame();
 }
 
 playGame();
