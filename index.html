@@ -4,13 +4,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
 </head>
 <body>
-
-    <p>hello world</p>
-    <h1>da rok paper sisor</h1>
-
-    <script src="script.js"></script>
+    <div class="main-container">
+        <div class="navbar-container">
+            <h3 id="text-nav">Bat's rock paper scissor.</h3>
+            <img src="svg's/Group.svg" id="nav-svg" alt="user-icon">
+        </div>
+        <div class="game-container">
+            <div class="user-container">
+                <img src="svg's/Avatar.svg" alt="avatar.svg">
+                <h1 id="username">Username</h1>
+                <h1 class = "score" id="user-score">0</h1>
+            </div>
+            <div class="play-container">
+                <p id="game-text"">Welcome to the <br>
+                bat’s rock paper <br>
+                scissor!
+                <br>
+                <br>
+                Please select one
+                to start</p>
+            </div>
+            <div class="user-container">
+                <img src="svg's/Avatar.svg" alt="avatar.svg">
+                <h1 id="username">AI</h1>
+                <h1 class ="score" id="ai-score">0</h1>
+            </div>
+        </div>
+        <div class="buttons-container">
+            <div class="button" id="rock-button">
+                <h3>Rock</h3>
+            </div>
+            <div class="button" id="paper-button">
+                <h3>Paper</h3>
+            </div>
+            <div class="button" id="sc-button">
+                <h3>Scissor</h3>
+            </div>
+        </div>
+    </div>
     
+    <script src="script.js" defer></script>
 </body>
 </html>
+
